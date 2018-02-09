@@ -1,33 +1,56 @@
-
-/**
- * Write a description of class Kruskal here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Kruskal
+import java.io.*;
+import java.util.*;
+class Kruskal
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Kruskal
-     */
-    public Kruskal()
+    private int V;
+    class Pair
     {
-        // initialise instance variables
-        x = 0;
+        int w,v;
+        Pair(int V,int W)
+        {
+            w=W;
+            v=V;
+        }
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    private LinkedList<Pair> adj[];
+    int parent[]=new int[9];
+    Kruskal(int v)
     {
-        // put your code here
-        return x + y;
+        V = v;
+        adj = new LinkedList[v];
+        for (int i=0; i<v; ++i)
+            adj[i] = new LinkedList();
+    }
+    void addEdge(int u, int x1,int x2)
+    {
+        Pair obj=new Pair(x1,x2);
+        Pair obj2=new Pair(u,x2);
+        adj[u].add(obj);  
+        adj[x1].add(obj2);
+    }
+    void MST(int u)
+    {
+        //To be implemented
+    }
+    public static void main(String args[])
+    {
+        Kruskal g=new Kruskal(7);
+        g.addEdge(0, 1, 8);
+        g.addEdge(0, 2, 4);
+        g.addEdge(0, 3, 6);
+        g.addEdge(1, 2, 3);
+        g.addEdge(2, 3, 7);
+        g.addEdge(2, 4, 9);
+        g.addEdge(1 ,4, 4);
+        g.addEdge(3, 4, 2);
+        g.addEdge(3, 5, 3);
+        g.addEdge(4, 5, 1);
+        g.addEdge(5, 6, 9);
+        g.parent[0]=-1;
+        
+        /*for(int i=0;i<9;i++)
+        g.parent[i]=0;
+        g.parent[0]=-1;
+        g.longestPath(0);*/
     }
 }
