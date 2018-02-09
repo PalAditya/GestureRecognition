@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=arr\ n\ size\ x
+comment0.target=void\ initialize(int[],\ int,\ int[],\ int[])
+comment1.params=arr\ size\ a\ b
+comment1.target=void\ w_union(int[],\ int[],\ int,\ int)
+comment2.params=Arr\ i
+comment2.target=int\ root(int[],\ int)
+comment3.params=arr\ A\ B
+comment3.target=boolean\ find(int[],\ int,\ int)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5

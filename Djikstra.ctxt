@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=v
+comment0.target=Djikstra(int)
+comment1.params=u\ x1\ x2
+comment1.target=void\ addEdge(int,\ int,\ int)
+comment2.params=u
+comment2.target=void\ shortestPath(int)
+comment3.params=a1\ a2
+comment3.target=int\ compare(Djikstra.Pair,\ Djikstra.Pair)
+comment4.params=u
+comment4.target=void\ longestPath(int)
+comment5.params=a1\ a2
+comment5.target=int\ compare(Djikstra.Pair,\ Djikstra.Pair)
+comment6.params=j
+comment6.target=void\ printPath(int)
+comment7.params=dist
+comment7.target=void\ printSolution(int[])
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+numComments=9

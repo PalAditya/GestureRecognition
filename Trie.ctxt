@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Trie()
+comment0.text=Constructor
+comment1.params=word
+comment1.target=int\ myInsert(java.lang.String)
+comment1.text=public\ void\ insert(String\ word)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ //if\ (search(word)\ \=\=\ true)\ \r\n\ \ \ \ \ \ \ \ //\ \ \ return;\ \ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ TrieNode\ current\ \=\ root;\ \r\n\ \ \ \ \ \ \ \ for\ (char\ ch\ \:\ word.toCharArray()\ )\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ TrieNode\ child\ \=\ current.subNode(ch);\r\n\ \ \ \ \ \ \ \ \ \ \ \ if\ (child\ \!\=\ null)\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\ \=\ child;\r\n\ \ \ \ \ \ \ \ \ \ \ \ else\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current.childList.add(new\ TrieNode(ch));\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\ \=\ current.subNode(ch);\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ //current.count++;\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ current.isEnd\ \=\ true;\r\n}
+comment2.params=word
+comment2.target=int\ mySearch(java.lang.String)
+comment2.text=public\ boolean\ search(String\ word)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ TrieNode\ current\ \=\ root;\ \ \r\n\ \ \ \ \ \ \ \ for\ (char\ ch\ \:\ word.toCharArray()\ )\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ if\ (current.subNode(ch)\ \=\=\ null)\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ false;\r\n\ \ \ \ \ \ \ \ \ \ \ \ else\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\ \=\ current.subNode(ch);\r\n\ \ \ \ \ \ \ \ }\ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ if\ (current.isEnd\ \=\=\ true)\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ true;\r\n\ \ \ \ \ \ \ \ return\ false;\r\n\ \ \ \ }\r\n\ \ \ \ void\ delete(String\ word)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ TrieNode\ current\ \=\ root;\ \ \r\n\ \ \ \ \ \ \ \ for\ (char\ ch\ \:\ word.toCharArray()\ )\r\n\ \ \ \ \ \ \ \ current\=current.subNode(ch);\r\n\ \ \ \ \ \ \ \ current.isEnd\=false;\r\n}
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+comment3.text=public\ void\ remove(String\ word)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ if\ (search(word)\ \=\=\ false)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println(word\ +"\ does\ not\ exist\ in\ trie\\n");\r\n\ \ \ \ \ \ \ \ \ \ \ \ return;\r\n\ \ \ \ \ \ \ \ }\ \ \ \ \ \ \ \ \ \ \ \ \ \r\n\ \ \ \ \ \ \ \ TrieNode\ current\ \=\ root;\r\n\ \ \ \ \ \ \ \ for\ (char\ ch\ \:\ word.toCharArray())\ \r\n\ \ \ \ \ \ \ \ {\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ TrieNode\ child\ \=\ current.subNode(ch);\r\n\ \ \ \ \ \ \ \ \ \ \ \ if\ (child.count\ \=\=\ 1)\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current.childList.remove(child);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return;\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ else\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ child.count--;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ current\ \=\ child;\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ current.isEnd\ \=\ false;\r\n}
+comment4.params=
+comment4.target=void\ go()
+numComments=5

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment0.text=int\ a,b;\r\n\ \ \ \ input_creator(int\ x,int\ y)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ a\=x;\r\n\ \ \ \ \ \ \ \ b\=y;\r\n}
+comment1.params=
+comment1.target=void\ go()
+comment1.text=class\ Comp\ implements\ Comparator<input_creator>\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ public\ int\ compare(input_creator\ a,input_creator\ b)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(a.a>b.a||a.b>b.b)\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ 1;\r\n\ \ \ \ \ \ \ \ \ \ \ \ else\ if(a.a<b.a||a.b<b.b)\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ -1;\r\n\ \ \ \ \ \ \ \ \ \ \ \ else\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ 0;\r\n\ \ \ \ \ \ \ \ }\r\n}
+comment2.params=
+comment2.target=int\ gen()
+numComments=3
