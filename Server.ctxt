@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Server()
+comment1.params=event
+comment1.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment10.params=tof
+comment10.target=void\ ableToType(boolean)
+comment11.params=
+comment11.target=void\ run()
+comment2.params=
+comment2.target=void\ startRunning()
+comment3.params=
+comment3.target=void\ waitForConnection()
+comment4.params=
+comment4.target=void\ setupStreams()
+comment5.params=
+comment5.target=void\ whileChatting()
+comment6.params=
+comment6.target=void\ closeCrap()
+comment7.params=message
+comment7.target=void\ sendMessage(java.lang.String)
+comment8.params=text
+comment8.target=void\ showMessage(java.lang.String)
+comment9.params=
+comment9.target=void\ run()
+numComments=12
