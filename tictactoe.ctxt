@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=board
+comment0.target=void\ print(char[][])
+comment1.params=board
+comment1.target=int\ check(char[][])
+comment2.params=board
+comment2.target=char\ whowon(char[][])
+comment3.params=board\ occupy
+comment3.target=void\ findbest(char[][],\ java.util.Set)
+comment4.params=board\ occupy
+comment4.target=void\ playsecond(char[][],\ java.util.Set)
+comment5.params=board\ occupy
+comment5.target=void\ playfirst(char[][],\ java.util.Set)
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+comment7.params=
+comment7.target=void\ go()
+numComments=8

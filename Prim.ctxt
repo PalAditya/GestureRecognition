@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=v
+comment0.target=Prim(int)
+comment1.params=u\ x1\ x2
+comment1.target=void\ addEdge(int,\ int,\ int)
+comment2.params=u
+comment2.target=void\ shortestPath(int)
+comment2.text=void\ shortestPath(int\ u)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ PriorityQueue<Pair>\ pq\ \=\ new\ PriorityQueue(9,new\ Comparator<Pair>()\ \r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ public\ int\ compare(Pair\ a1,\ Pair\ a2)\ \r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a1.w-a2.w;\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ );\r\n\ \ \ \ \ \ \ \ int\ dist[]\=new\ int[9];\r\n\ \ \ \ \ \ \ \ int\ i;\r\n\ \ \ \ \ \ \ \ /*for(i\=0;i<9;i++)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ Iterator\ itr\=adj[i].iterator();\r\n\ \ \ \ \ \ \ \ \ \ \ \ while(itr.hasNext())\r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Pair\ temp2\=(Pair)itr.next();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.println(i+"\:\ "+temp2.v+"\ "+temp2.w);\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ for(i\=0;i<9;i++)\r\n\ \ \ \ \ \ \ \ dist[i]\=Integer.MAX_VALUE;\r\n\ \ \ \ \ \ \ \ dist[u]\=0;\r\n\ \ \ \ \ \ \ \ pq.add(new\ Pair(u,0));\r\n\ \ \ \ \ \ \ \ while(\!pq.isEmpty())\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ Pair\ temp\=pq.poll();\r\n\ \ \ \ \ \ \ \ \ \ \ \ int\ vertex\=temp.v,weight\=temp.w,v1,w1;\r\n\ \ \ \ \ \ \ \ \ \ \ \ Iterator\ itr\=adj[vertex].iterator();\r\n\ \ \ \ \ \ \ \ \ \ \ \ while(itr.hasNext())\r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Pair\ temp2\=(Pair)itr.next();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v1\=temp2.v;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w1\=temp2.w;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //System.out.println("Iterating\ for\ "+vertex+"\:\ "+v1+","+w1);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(dist[v1]>w1)\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dist[v1]\=w1;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent[v1]\=vertex;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pq.add(new\ Pair(v1,dist[v1]));\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ /*for(i\=0;i<9;i++)\r\n\ \ \ \ \ \ \ \ System.out.println(i+"\:\ "+dist[i]);\r\n\ \ \ \ \ \ \ \ printSolution(dist);\r\n}
+comment3.params=a1\ a2
+comment3.target=int\ compare(Prim.Pair,\ Prim.Pair)
+comment4.params=j
+comment4.target=void\ printPath(int)
+comment5.params=dist
+comment5.target=void\ printSolution(int[])
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+numComments=7

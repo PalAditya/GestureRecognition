@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=
+comment0.target=encryption_gui()
+comment0.text=\r\n\ Creates\ new\ form\ encryption_gui\r\n
+comment1.params=
+comment1.target=void\ initComponents()
+comment1.text=\r\n\ This\ method\ is\ called\ from\ within\ the\ constructor\ to\ initialize\ the\ form.\r\n\ WARNING\:\ Do\ NOT\ modify\ this\ code.\ The\ content\ of\ this\ method\ is\ always\r\n\ regenerated\ by\ the\ Form\ Editor.\r\n
+comment2.params=
+comment2.target=int\ getSize()
+comment3.params=i
+comment3.target=java.lang.String\ getElementAt(int)
+comment4.params=evt
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment5.params=evt
+comment5.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment6.params=evt
+comment6.target=void\ jTextField3ActionPerformed(java.awt.event.ActionEvent)
+comment7.params=evt
+comment7.target=void\ jButton1ActionPerformed(java.awt.event.ActionEvent)
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+comment8.text=\r\n\ @param\ args\ the\ command\ line\ arguments\r\n
+comment9.params=
+comment9.target=void\ run()
+numComments=10

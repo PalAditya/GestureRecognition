@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Gameplay()
+comment1.params=
+comment1.target=void\ init()
+comment2.params=obj
+comment2.target=int\ createShip(Battleship)
+comment3.params=
+comment3.target=void\ main()
+comment4.params=
+comment4.target=void\ display()
+comment5.params=obj1\ obj2\ obj3
+comment5.target=void\ Guess(Battleship,\ Battleship,\ Battleship)
+numComments=6

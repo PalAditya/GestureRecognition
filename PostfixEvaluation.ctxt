@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=str\ stack
+comment0.target=double\ evaluate(java.lang.String,\ PostfixEvaluation.InnerStack)
+comment1.params=
+comment1.target=void\ main()
+comment2.params=ch
+comment2.target=boolean\ isOperator(char)
+numComments=3
