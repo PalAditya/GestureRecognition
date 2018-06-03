@@ -2,6 +2,12 @@ import java.util.*;
 class AndroidTest 
 {
     private int V;
+
+    private void printSolution(int par[],int x) {
+        if(par[x]!=x)
+            printSolution(par,par[x]);
+        System.out.print(x);
+    }
     class Pair
     {
         int v;
@@ -57,7 +63,7 @@ class AndroidTest
         //g.display();
         g.modifyEdgeCost(data);
         //g.display();
-        g.shortestPath(0);
+        g.shortestPath(6);
     }
     void display()
     {
@@ -117,7 +123,11 @@ class AndroidTest
         }
         for(i=0;i<V;i++)
         dist[i]=Integer.MAX_VALUE;
-        dist[u]=0;
+            dist[u]=0;
+        int parent[]=new int[V];
+        for(i=0;i<V;i++)
+            parent[i]=i;
+        //parent[u]=-1;
         pq.add(new Pair(u,0));
         while(!pq.isEmpty())
         {
@@ -135,7 +145,7 @@ class AndroidTest
                 if(dist[v1]>w1+dist[vertex])
                 {
                     dist[v1]=w1+dist[vertex];
-                    //parent[v1]=vertex;
+                    parent[v1]=vertex;
                     pq.add(new Pair(v1,dist[v1]));
                 }
             }
@@ -145,6 +155,12 @@ class AndroidTest
         System.out.print("1000000000 ");
         else
         System.out.print(dist[i]+" ");
-        //printSolution(dist);
+        System.out.println();
+        for(i=0;i<V;i++)
+        {
+            //System.out.print(parent[i]+",");
+            printSolution(parent,i);
+            System.out.println();
+        }
     }
 }
