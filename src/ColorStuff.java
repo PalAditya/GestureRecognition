@@ -7,8 +7,9 @@ class ColorStuff2 extends JPanel
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        g.fillRect(0,0,400,400);
-        g.setColor(Color.BLACK);
+        g.setColor(Color.RED);
+        g.fillRect(10,20,400,300);
+        
         /*Snake snake=new Snake();
         for(Point point:snake.snakeParts)
         {
@@ -28,11 +29,13 @@ public void go()
         JFrame frame=new JFrame();
         ColorStuff2 obj=new ColorStuff2();
         frame.setSize(400,400);
+         frame.getContentPane().add(obj);
+         obj.repaint();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JButton button=new JButton("Umm");
-        frame.add(obj);
+       
         //frame.add(button);
-        obj.repaint(); 
+         
     }
 }

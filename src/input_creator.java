@@ -12,355 +12,78 @@ class input_creator
     }
     public void go()throws IOException
     {
-        FileWriter f = new FileWriter("C:/users/lenovo/documents/Stream/input10.txt");
+        FileWriter f = new FileWriter("D:/Documents/Stream/input10.txt");
         BufferedWriter br=new BufferedWriter(f);
-        int i,type,count2=0,count3=0,n=0;
-        long gen;
-        br.write(5+"");
-        br.newLine();
-        br.write(5000000+"");
-        br.newLine();
-        for(i=0;i<5000000;i++)
+        String arr[]={"chemistry","signals","systems","love","magic","defence","darkarts","pds","algorithms","nlp","herbology",
+                "textingcrush","watchstarwars","havefun","potions","photography","transfiguration","flyinglessons","arithmancy","cps","ie","dec",
+        "textingcrushagain","stalkingpeople","sleep","trynottogrin","physics","english","magicalcreatures","charms","shippingharmony","estm","biology",
+        "geometry","uff","linearalgebra","beinguseless","divination","energyblast","mugglestudies","matlab","differentiation","astronomy",
+        "fencing","lotsoffencing","historyofmagic","chemistry","signals","systems","love","magic","defence","darkarts","pds","algorithms","nlp","herbology",
+                "textingcrush","watchstarwars","havefun","potions","photography","transfiguration","flyinglessons","arithmancy","cps","ie","dec",
+        "textingcrushagain","stalkingpeople","sleep","trynottogrin","physics","english","magicalcreatures","charms","shippingharmony","estm","biology",
+        "geometry","uff","linearalgebra","beinguseless","divination","energyblast","mugglestudies","matlab","differentiation","astronomy",
+        "fencing","lotsoffencing","historyofmagic","chemistry","signals","systems","love","magic","defence","darkarts","pds","algorithms","nlp","herbology",
+                "textingcrush","watchstarwars","havefun","potions","photography","transfiguration","flyinglessons","arithmancy","cps","ie","dec",
+        "textingcrushagain","stalkingpeople","sleep","trynottogrin","physics","english","magicalcreatures","charms","shippingharmony","estm","biology",
+        "geometry","uff","linearalgebra","beinguseless","divination","energyblast","mugglestudies","matlab","differentiation","astronomy",
+        "fencing","lotsoffencing","historyofmagic","chemistry","signals","systems","love","magic","defence","darkarts","pds","algorithms","nlp","herbology",
+                "textingcrush","watchstarwars","havefun","potions","photography","transfiguration","flyinglessons","arithmancy","cps","ie","dec",
+        "textingcrushagain","stalkingpeople","sleep","trynottogrin","physics","english","magicalcreatures","charms","shippingharmony","estm","biology",
+        "geometry","uff","linearalgebra","beinguseless","divination","energyblast","mugglestudies","matlab","differentiation","astronomy",
+        "fencing","lotsoffencing","historyofmagic","chemistry","signals","systems","love","magic","defence","darkarts","pds","algorithms","nlp","herbology",
+                "textingcrush","watchstarwars","havefun","potions","photography","transfiguration","flyinglessons","arithmancy","cps","ie","dec",
+        "textingcrushagain","stalkingpeople","sleep","trynottogrin","physics","english","magicalcreatures","charms","shippingharmony","estm","biology",
+        "geometry","uff","linearalgebra","beinguseless","divination","energyblast","mugglestudies","matlab","differentiation","astronomy",
+        "fencing","lotsoffencing","historyofmagic","chemistry","signals","systems","love","magic","defence","darkarts","pds","algorithms","nlp","herbology",
+                "textingcrush","watchstarwars","havefun","potions","photography","transfiguration","flyinglessons","arithmancy","cps","ie","dec",
+        "textingcrushagain","stalkingpeople","sleep","trynottogrin","physics","english","magicalcreatures","charms","shippingharmony","estm","biology",
+        "geometry","uff","linearalgebra","beinguseless","divination","energyblast","mugglestudies","matlab","differentiation","astronomy",
+        "fencing","lotsoffencing","historyofmagic"};
+        int i,type,count2=0,count3=0,n=0,l=arr.length;
+        int gen=0,gen2,k1=1;
+        br.write(100000+"");
+        br.newLine();   
+        TreeSet<Integer> ts=new TreeSet();
+        for(i=0;i<99999;i++)
         {
             type=(int)(Math.random()*3)+1;
-            if(type==2&&count2==1)
+            if(type==2)
             {
-                if(count3<3&&n>2)
+                while(true)
                 {
-                    type=3;
-                    count3++;
-                    br.write(3+"");
-                    br.newLine();
-                    if(n%2==0)
-                        n=n-2;
-                    else
-                        n--;
+                    gen=(int)(Math.random()*1000000000)+1;
+                    if(ts.add(gen))
+                        break;          
                 }
-                else
-                {
-                    type=1;
-                    count3=0;
-                    gen=getRandom();
-                    br.write("1 ");
-                    n++;
-                    br.write(gen+"");
-                    br.newLine();
-                }
-                count2=0;
-            }
-            else if(type==2&&count2==0&&n>0)
-            {
-                count2++;
-                br.write(2+"");
+                gen2=(int)(Math.random()*l);
+                br.write("Set "+arr[gen2]+" "+gen);
                 br.newLine();
-            }
-            else if(type==3&&n>2)
-            {
-                type=3;
-                count3++;
-                br.write(3+"");
-                br.newLine();
-                if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-            }
-            else if(type==3&&n<2)
-            {
-                type=1;
-                count3=0;
-                gen=getRandom();
-                br.write("1 ");
+                k1++;
                 n++;
-                br.write(gen+"");
+            }
+            else if(type==1&&n==0)
+                if(k1%8==0)
+                    type=2;
+                else
+                    type=3;
+            if(type==1)
+            {
+                gen2=(int)(Math.random()*l);
+                br.write("Remove "+arr[gen2]);
                 br.newLine();
+                n--;
             }
             else
             {
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
+                gen2=(int)(Math.random()*l);
+                br.write("Query "+arr[gen2]);
                 br.newLine();
+                k1++;
             }
         }
-        br.write(500000+"");
-        br.newLine();
-        count2=0;
-        count3=0;
-        n=0;
-        for(i=0;i<500000;i++)
-        {
-            type=(int)(Math.random()*3)+1;
-            if(type==2&&count2==1)
-            {
-                if(count3<3&&n>2)
-                {
-                    type=3;
-                    count3++;
-                    br.write(3+"");
-                    br.newLine();
-                    if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-                }
-                else
-                {
-                    type=1;
-                    count3=0;
-                    gen=getRandom();
-                    br.write("1 ");
-                    n++;
-                    br.write(gen+"");
-                    br.newLine();
-                }
-                count2=0;
-            }
-            else if(type==2&&count2==0&&n>0)
-            {
-                count2++;
-                br.write(2+"");
-                br.newLine();
-            }
-            else if(type==3&&n>2)
-            {
-                type=3;
-                count3++;
-                br.write(3+"");
-                br.newLine();
-                if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-            }
-            else if(type==3&&n<2)
-            {
-                type=1;
-                count3=0;
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
-                br.newLine();
-            }
-            else
-            {
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
-                br.newLine();
-            }
-        }
-        br.write(500000+"");
-        br.newLine();
-        count2=0;
-        count3=0;
-        n=0;
-        for(i=0;i<500000;i++)
-        {
-            type=(int)(Math.random()*3)+1;
-            if(type==2&&count2==1)
-            {
-                if(count3<3&&n>2)
-                {
-                    type=3;
-                    count3++;
-                    br.write(3+"");
-                    br.newLine();
-                    if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-                }
-                else
-                {
-                    type=1;
-                    count3=0;
-                    gen=getRandom();
-                    br.write("1 ");
-                    n++;
-                    br.write(gen+"");
-                    br.newLine();
-                }
-                count2=0;
-            }
-            else if(type==2&&count2==0&&n>0)
-            {
-                count2++;
-                br.write(2+"");
-                br.newLine();
-            }
-            else if(type==3&&n>2)
-            {
-                type=3;
-                count3++;
-                br.write(3+"");
-                br.newLine();
-                if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-            }
-            else if(type==3&&n<2)
-            {
-                type=1;
-                count3=0;
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
-                br.newLine();
-            }
-            else
-            {
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
-                br.newLine();
-            }
-        }
-        br.write(700000+"");
-        br.newLine();
-        count2=0;
-        count3=0;
-        n=0;
-        for(i=0;i<700000;i++)
-        {
-            type=(int)(Math.random()*3)+1;
-            if(type==2&&count2==1)
-            {
-                if(count3<3&&n>2)
-                {
-                    type=3;
-                    count3++;
-                    br.write(3+"");
-                    br.newLine();
-                    if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-                }
-                else
-                {
-                    type=1;
-                    count3=0;
-                    gen=getRandom();
-                    br.write("1 ");
-                    n++;
-                    br.write(gen+"");
-                    br.newLine();
-                }
-                count2=0;
-            }
-            else if(type==2&&count2==0&&n>0)
-            {
-                count2++;
-                br.write(2+"");
-                br.newLine();
-                
-            }
-            else if(type==3&&n>2)
-            {
-                type=3;
-                count3++;
-                br.write(3+"");
-                br.newLine();
-                if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-            }
-            else if(type==3&&n<2)
-            {
-                type=1;
-                count3=0;
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
-                br.newLine();
-            }
-            else
-            {
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
-                br.newLine();
-            }
-        }
-        br.write(800000+"");
-        br.newLine();
-        count2=0;
-        count3=0;
-        n=0;
-        for(i=0;i<800000;i++)
-        {
-            type=(int)(Math.random()*3)+1;
-            if(type==2&&count2==1)
-            {
-                if(count3<3&&n>2)
-                {
-                    type=3;
-                    count3++;
-                    br.write(3+"");
-                    br.newLine();
-                    if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-                }
-                else
-                {
-                    type=1;
-                    count3=0;
-                    gen=getRandom();
-                    br.write("1 ");
-                    n++;
-                    br.write(gen+"");
-                    br.newLine();
-                }
-                count2=0;
-            }
-            else if(type==2&&count2==0&&n>0)
-            {
-                count2++;
-                br.write(2+"");
-                br.newLine();
-            }
-            else if(type==3&&n>2)
-            {
-                type=3;
-                count3++;
-                br.write(3+"");
-                br.newLine();
-                if(n%2==0)
-                    n=n-2;
-                else
-                    n--;
-            }
-            else if(type==3&&n<2)
-            {
-                type=1;
-                count3=0;
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
-                br.newLine();
-            }
-            else
-            {
-                gen=getRandom();
-                br.write("1 ");
-                n++;
-                br.write(gen+"");
-                br.newLine();
-            }
-        }
+         gen2=(int)(Math.random()*l);
+         br.write("Query "+arr[gen2]);
+         br.newLine();
         br.close();
     }
     public long getRandom()

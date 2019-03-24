@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 public class GUI1
 {
-    JButton button,button2;
+    JButton button,button2,button3,button4;
     public static void main(String args[])
     {
         try
@@ -23,9 +23,15 @@ public class GUI1
         JFrame frame=new JFrame();
         button=new JButton("I'm just a button :P");
         button2=new JButton("Another button");
+        button3=new JButton("Please!");
+        button4=new JButton("Please 2!");
+        JPanel panel=new JPanel();
+        panel.add(button3);
+        panel.add(button4);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(BorderLayout.SOUTH,button);
         frame.getContentPane().add(BorderLayout.NORTH,button2);
+        frame.getContentPane().add(BorderLayout.EAST,panel);
         frame.setSize(400,400);
         frame.setVisible(true);
         button.addActionListener(new LabelListener());

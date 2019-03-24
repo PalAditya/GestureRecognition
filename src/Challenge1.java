@@ -8,6 +8,11 @@ public class Challenge1
     }
     public void go() throws IOException
     {
+        /*BellmanFord obj=new BellmanFord(3,3);
+        obj.addEdge(0, 1, 1);
+        obj.addEdge(1, 2, 1);
+        obj.addEdge(0, 2, 1);
+        obj.show(0, 2, obj.getEdgeArray());*/
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         int i,n,sum=0;
         int arr[],arr2[];

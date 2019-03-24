@@ -222,7 +222,7 @@ public class SnakeDeluxe implements ActionListener,KeyListener
         int i=event.getKeyCode();
         if(i==KeyEvent.VK_A&&direction!=right)
             direction=left;
-        if(i==KeyEvent.VK_D&&direction!=left)
+        if(i==KeyEvent.VK_F&&direction!=left)
             direction=right;
         if(i==KeyEvent.VK_S&&direction!=up)
             direction=down;
