@@ -2,11 +2,41 @@
  *
  * @author Lenovo
  */
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BTree
 {
+
+    ArrayList<String> getLevel(ArrayList<Pair> al,int k,boolean createChild)
+        {
+            Iterator iterator=al.iterator();
+            ArrayList<String> st=new ArrayList<>();
+            String keysk="{\"keys\":[";
+            while(iterator.hasNext())
+            {
+                Pair x=(Pair)iterator.next();
+                if(x.level!=k)
+                    continue;
+                //System.out.println("Val: "+x.val+",Delim: "+x.delim);
+                if(x.delim!=1)
+                    keysk=keysk+"\""+x.val+"\",";
+                else
+                {
+                    keysk=keysk+"\""+x.val+"\"]}";
+                    if(createChild)
+                        keysk+=",\"children\":[]}";
+                    st.add(keysk);
+                    //System.out.println(keysk);
+                    keysk="{\"keys\":[";
+                }
+            }
+            return st;
+        }
     class BTreeNode 
     { 
         int keys[];  // An array of keys 
@@ -14,6 +44,7 @@ public class BTree
         BTreeNode C[]; // An array of child pointers 
         int n;     // Current number of keys 
         boolean leaf;
+        String json;
         // Constructor for BTreeNode class 
         BTreeNode(int t1, boolean leaf1) 
         { 
@@ -25,23 +56,36 @@ public class BTree
             keys = new int[2*t-1]; 
             C = new BTreeNode[2*t]; 
             n = 0; 
+            json="{";
         } 
+        
         void traverse() //preorder
         { 
             // There are n keys and n+1 children, travers through n keys 
             // and first n children 
             int i; 
+            System.out.println("My n is: "+n);
             for (i = 0; i < n; i++) 
             { 
                 // If this is not leaf, then before printing key[i], 
                 // traverse the subtree rooted with child C[i]. 
                 if (!leaf) 
                     C[i].traverse(); 
-                System.out.print(keys[i]+" "); 
+                //System.out.print(keys[i]+" ");
             } 
             // Print the subtree rooted with last child 
             if (!leaf) 
                 C[i].traverse(); 
+        }
+        void jsonify()
+        {
+            int i;
+            json+="\"keys\":{[";
+            for(i=0;i<n-1;i++)
+            {
+                System.out.print("\""+keys[i]+"\",");
+            }
+            System.out.print("\""+keys[i]+"\"],\"children\":[");
         }
         BTreeNode search(int k) 
         { 
@@ -430,29 +474,112 @@ public class BTree
     {
         int level;
         BTreeNode node;
+        int val=0;
+        int delim=0;
         Pair(BTreeNode a,int b)
         {
             node=a;
             level=b;
         }
+        Pair(int a,int b)
+        {
+            val=a;
+            level=b;
+        }
+        Pair(int a,int b,int c)
+        {
+            val=a;
+            level=b;
+            delim=c;
+        }
     }
-    void levelOrder()
+    void levelOrder() throws UnsupportedEncodingException
     {
         int i;
+        ArrayList<Pair> al=new ArrayList<>();
         Queue<Pair> q=new LinkedList<>();
         q.add(new Pair(root,0));
+        int mlevel=0;
         while(!q.isEmpty())
         {
             Pair x=(Pair)q.poll();
             for(i=0;i<x.node.n;i++)
             {
-                System.out.print("("+x.node.keys[i]+","+x.level+") ");
+                //System.out.print("("+x.node.keys[i]+","+x.level+") ");
+                if(i!=x.node.n-1)
+                    al.add(new Pair(x.node.keys[i],x.level));
+                else
+                    al.add(new Pair(x.node.keys[i],x.level,1));
                 if(!x.node.leaf)
-                q.add(new Pair(x.node.C[i],x.level+1));
+                {
+                    q.add(new Pair(x.node.C[i],x.level+1));
+                    mlevel=Math.max(mlevel,x.level+1);
+                }
             }
             if(!x.node.leaf)
-            q.add(new Pair(x.node.C[i],x.level+1));
+            {
+                q.add(new Pair(x.node.C[i],x.level+1));
+                mlevel=Math.max(mlevel,x.level+1);
+            }       
         }
+        //System.out.print("\n"+mlevel);
+        ArrayList<String> x=getLevel(al,mlevel,false);
+        int j,l,k,done=0;
+        for(i=mlevel-1;i>=0;i--)
+        {
+            done=0;
+            ArrayList<String> vals=getLevel(al,i,true);
+            //System.out.println(Arrays.toString(vals.toArray()));
+            l=vals.size();
+            ArrayList<String> temp=new ArrayList<>();
+            for(j=0;j<l;j++)
+            {
+                String y=vals.get(j);
+                y=y.substring(9,y.indexOf("]"));
+                //System.out.println(y);
+                y=y.replace("\"","");
+                y=y.replace("\"", "");
+                //System.out.println("Y: "+y);
+                String r[]=y.split(",");
+                String s="";
+                //System.out.println("DEBUG:"+x.size()+","+r.length);
+                for(k=0;k<=r.length;k++)
+                {
+                    if(k!=r.length)
+                        s+=x.get(done++)+",";
+                    else
+                        s+=x.get(done++);
+                    //done++;
+                }
+                //System.out.println("NewString");
+                String newString=vals.get(j).substring(0,vals.get(j).indexOf("]")+1)+",\"children\":["+s+"]}";
+                if(done==x.size())
+                    newString+=",";
+                //System.out.println(newString);
+                temp.add(newString);
+            }
+            x.clear();
+            x.addAll(temp);
+        }
+        String str="";
+        for(i=0;i<x.size();i++)
+            str+=x.get(i);
+        int counter=0;
+        String temp="";
+        l=str.length();
+        for(i=l-1;i>=0;i--)
+        {
+            if(str.charAt(i)==','&&counter<mlevel)
+            {
+                counter++;
+                continue;
+            }
+            temp=str.charAt(i)+temp;
+        }
+        str=temp;
+        //System.out.println(str);
+        BTreeVisualization obj=new BTreeVisualization("structure="+URLEncoder.encode(str, "UTF-8")+"&level="+URLEncoder.encode(str, "UTF-8"));
+        obj.call();
     }
     void remove(int k) 
     { 
@@ -477,14 +604,14 @@ public class BTree
             tmp=null; 
         }  
     }
-    public static void main(String args[]) 
+    public static void main(String args[]) throws UnsupportedEncodingException 
     { 
-        BTree tree=new BTree(3); // A B-Tree with minium degree 3 
+        BTree tree=new BTree(10); // A B-Tree with minium degree 3 
         tree.go();
     }
-    public void go()
+    public void go() throws UnsupportedEncodingException
     {
-        root=new BTreeNode(3,true);
+        root=new BTreeNode(10,true);
         /*root.insert(1);
         root.insert(2);
         root.insert(3);
@@ -498,30 +625,14 @@ public class BTree
         for(int i=11;i<=21;i++)
             root.insert(i);
         levelOrder();*/
-        root.insert(20); 
-        root.insert(5); 
-        root.insert(6); 
-        root.insert(12); 
-        root.insert(30); 
-        root.insert(7); 
-        root.insert(17);
-        root.insert(1); 
-        root.insert(3); 
-        root.insert(7); 
-        root.insert(10); 
-        root.insert(11); 
-        root.insert(13); 
-        root.insert(14); 
-        root.insert(15); 
-        root.insert(18); 
-        root.insert(16); 
-        root.insert(19); 
-        System.out.println("Traversal of the constucted tree is "); 
+        for(int xx=1;xx<=90;xx++)
+            root.insert(xx);
+        /*System.out.println("Traversal of the constucted tree is "); 
         root.traverse();
-        System.out.println();
-        System.out.println("Leve order traversal of the constucted tree is ");
+        System.out.println();*/
+        //System.out.println("Leve order traversal of the constucted tree is ");
         levelOrder();
-        System.out.println();
+        /*System.out.println();
         root.remove(6);
         System.out.println("Leve order traversal of the constucted tree is ");
         levelOrder();
@@ -547,6 +658,6 @@ public class BTree
         if(root.search(k) != null) 
             System.out.println("Present");
         else
-            System.out.println("Not Present");
+            System.out.println("Not Present");*/
     } 
 }
